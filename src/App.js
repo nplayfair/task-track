@@ -26,13 +26,21 @@ function App() {
 
   // Delete task
   const deleteTask = (id) => {
-    console.log('delete ', id)
+    // Set tasks to the original task list, minus the filtered out one
+    setTasks(tasks.filter((task) => task.id !== id))
+  }
+
+  // Toggle reminder
+  const toggleReminder = (id) => {
+    // If the id passed in is the current task id, spread the task across but invert the reminder property
+    setTasks(tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder } : task))
   }
 
   return (
     <div className='container'>
       <Header title='Task Tracker'/>
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : 
+        'No tasks'}
     </div>
   );
 }
