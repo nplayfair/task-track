@@ -1,0 +1,13 @@
+import { Link } from 'react-router-dom'
+
+const About = () => {
+  return (
+    <div>
+      <h4>Version 1.0.1</h4>
+      <p>Git repository: <a href="https://github.com/nplayfair/task-track">GitHub</a></p>
+      <Link to="/">Home</Link>
+    </div>
+  )
+}
+
+export default About
